@@ -48,5 +48,6 @@ h6 {
 /* root */
 
 :root {
-  --bg-color: #FFECC7;
+  --bg-color: #ffecc7;
+  --font-color: #7b5100;
 }

@@ -16,7 +16,7 @@ import food14 from '../assets/img/food14.png';
 import food15 from '../assets/img/food15.png';
 import food16 from '../assets/img/food16.png';
 
-const imgData = [
+const cardData = [
   { id: uuidv4(), src: food1, name: 'food1' },
   { id: uuidv4(), src: food2, name: 'food2' },
   { id: uuidv4(), src: food3, name: 'food3' },
@@ -35,4 +35,4 @@ const imgData = [
   { id: uuidv4(), src: food16, name: 'food16' },
 ];
 
-export default imgData;
+export default cardData;

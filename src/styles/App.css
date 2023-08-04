@@ -6,9 +6,10 @@
 }
 
 .container {
-  padding: 30px;
+  padding: 12px;
   background-color: var(--bg-color);
   color: var(--font-color);
+  font-size: 1rem;
 }
 
 .header {
@@ -20,21 +21,15 @@
 
 .scores {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  font-size: 1.2rem;
-  border: 1px solid var(--light-brown);
   border-radius: 10px;
-  padding: 15px;
+  padding: 12px;
+  border: 1px solid var(--light-brown);
 }
 
-.title {
-  font-family: 'Hylia Serif Beta', sans-serif;
-  font-size: 2.7rem;
-}
-
+.title,
 .sub-text {
-  font-size: 1.2rem;
+  display: none;
 }
 
 .footer {
@@ -46,4 +41,57 @@ button {
   cursor: pointer;
   color: inherit;
   background: transparent;
+}
+
+.audio-player {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.audio-player button {
+  border: none;
+  font-size: 1.3rem;
+}
+
+.music-text {
+  display: none;
+}
+
+/* for desktop */
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  .title {
+    font-family: 'Hylia Serif Beta', sans-serif;
+    font-size: 2.7rem;
+    display: block;
+  }
+
+  .sub-text {
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .scores {
+    flex-direction: column;
+  }
+
+  .music-text {
+    display: block;
+  }
+
+  .audio-player button {
+    font-size: 1.1rem;
+  }
+
+  .scores {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
 }

@@ -12,7 +12,7 @@ function Cards({
   setHasWon,
   highestScore,
 }) {
-  // use card data for inital render
+  // use card data array for inital render
   const [cards, setCards] = useState(cardData);
 
   // Fisher-Yates shuffle algorithm
@@ -30,10 +30,8 @@ function Cards({
   }
 
   function handleValidCardClick(cardId) {
-    // Compute the new score first
     const newScore = score + 1;
 
-    // add id to array of clicked cards
     setClickedCards([...clickedCards, cardId]);
     updateHighScore(newScore);
     checkForWin(newScore);

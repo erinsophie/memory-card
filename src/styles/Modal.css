@@ -4,14 +4,16 @@
   z-index: 1;
   top: 50%;
   left: 50%;
-  width: 300px;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
+  font-size: 1.3rem;
+
+  /* flex */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  font-size: 1.3rem;
+  text-align: center;
 
   /* colors */
   box-shadow: 10px 5px 5px #323232;
@@ -32,7 +34,6 @@
   cursor: pointer;
   color: inherit;
   font-size: inherit;
-  width: 50%;
   background-color: transparent;
   border: 1px solid var(--light-brown);
   border-radius: 10px;
@@ -40,7 +41,11 @@
 }
 
 .play-again-btn {
-  
+  transition: transform 0.2s ease-in-out;
+}
+
+.play-again-btn:hover {
+  transform: scale(1.03);
 }
 
 .overlay.active {

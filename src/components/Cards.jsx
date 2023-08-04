@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import cardData from './cardData';
 import '../styles/Cards.css';
-import Modal from './Modal';
 
-function Cards({ score, setScore, clickedCards, setClickedCards }) {
+function Cards({
+  score,
+  setScore,
+  clickedCards,
+  setClickedCards,
+  showModal,
+  setShowModal,
+}) {
   // use card data for inital render
   const [cards, setCards] = useState(cardData);
-  const [showModal, setShowModal] = useState(false);
-
-  // simple reset
-  function resetGame() {
-    setScore(0);
-    setClickedCards([]);
-    setShowModal(false);
-  }
 
   // Fisher-Yates shuffle algorithm
   function shuffleCards(array) {
@@ -30,22 +28,22 @@ function Cards({ score, setScore, clickedCards, setClickedCards }) {
       // if card has already been clicked, end game
       setShowModal(true);
     } else {
-      // else, add id to array, increment score, shuffle cards
       if (!showModal) {
+        // add id to cards array
         setClickedCards([...clickedCards, cardId]);
-        setScore(score + 1);
-        setCards(shuffleCards([...cards]));
+        // increment score
+        setScore((prevScore) => prevScore + 1);
+
+        // check if new score matches the amount of cards, if so, show the modal
+        score + 1 === cardData.length
+          ? setShowModal(true)
+          : setCards(shuffleCards([...cards]));
       }
     }
   }
 
-  // always render modal but use showModal state to conditionally apply the active class
-  // when the play again button is clicked, reset the game
-  // conditionally render overlay active class
   return (
     <div className="cards-container">
-      <Modal resetGame={resetGame} showModal={showModal} />
-      <div className={`overlay ${showModal ? 'active' : ''}`}></div>
       {cards.map((card) => (
         <div
           key={card.id}

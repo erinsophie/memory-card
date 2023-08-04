@@ -1,9 +1,4 @@
-/* custom font */
 
-@font-face {
-  font-family: 'Hylia Serif Beta';
-  src: url('../assets/fonts/HyliaSerif.ttf') format('truetype');
-}
 
 /* css reset */
 
@@ -16,7 +11,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Hylia Serif Beta', sans-serif;
+  font-family: 'Inconsolata', monospace;
 }
 
 img,
@@ -50,4 +45,6 @@ h6 {
 :root {
   --bg-color: #ffecc7;
   --font-color: #7b5100;
+  --light-brown: #B57700;
+  --shadow: #AAAAAA;
 }

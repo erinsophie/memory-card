@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import cardData from './cardData';
 import '../styles/Cards.css';
+import Modal from './Modal';
 
 function Cards({ score, setScore, clickedCards, setClickedCards }) {
+  // use card data for inital render
   const [cards, setCards] = useState(cardData);
+  const [showModal, setShowModal] = useState(false);
 
   // simple reset
   function resetGame() {
     setScore(0);
     setClickedCards([]);
+    setShowModal(false);
   }
 
   // Fisher-Yates shuffle algorithm
@@ -24,22 +28,24 @@ function Cards({ score, setScore, clickedCards, setClickedCards }) {
   function handleClick(cardId) {
     if (clickedCards.includes(cardId)) {
       // if card has already been clicked, end game
-      resetGame();
+      setShowModal(true);
     } else {
-      // else, add id to array and increment score
-      setClickedCards([...clickedCards, cardId]);
-      setScore(score + 1);
-      setCards(shuffleCards([...cards]));
+      // else, add id to array, increment score, shuffle cards
+      if (!showModal) {
+        setClickedCards([...clickedCards, cardId]);
+        setScore(score + 1);
+        setCards(shuffleCards([...cards]));
+      }
     }
   }
 
-  console.log('cards:');
-  console.log(cards);
-  console.log('clicked cards:');
-  console.log(clickedCards);
-
+  // always render modal but use showModal state to conditionally apply the active class
+  // when the play again button is clicked, reset the game
+  // conditionally render overlay active class
   return (
     <div className="cards-container">
+      <Modal resetGame={resetGame} showModal={showModal} />
+      <div className={`overlay ${showModal ? 'active' : ''}`}></div>
       {cards.map((card) => (
         <div
           key={card.id}
@@ -47,6 +53,7 @@ function Cards({ score, setScore, clickedCards, setClickedCards }) {
           onClick={() => handleClick(card.id)}
         >
           <img src={card.src} alt={card.name} className="img" />
+          <p>{card.name}</p>
         </div>
       ))}
     </div>

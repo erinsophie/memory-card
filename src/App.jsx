@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './styles/App.css';
 import Cards from './components/Cards';
-import Modal from './components/Modal';
+import Footer from './components/Footer';
 
 function App() {
   const [score, setScore] = useState(0);
@@ -15,8 +15,8 @@ function App() {
           How good is your memory? Try to click on every card only once!
         </p>
         <div className="scores">
-          <p>Highest score:</p>
           <p>Score: {score}</p>
+          <p>Highest score:</p>
         </div>
       </header>
 
@@ -26,6 +26,8 @@ function App() {
         clickedCards={clickedCards}
         setClickedCards={setClickedCards}
       />
+
+      <Footer />
     </div>
   );
 }

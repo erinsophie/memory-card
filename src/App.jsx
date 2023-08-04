@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './styles/App.css';
 import Modal from './components/Modal';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
+import MusicPlayer from './components/MusicPlayer';
 
 function App() {
+  let highestScore = useRef(0);
   const [score, setScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +16,7 @@ function App() {
     setScore(0);
     setClickedCards([]);
     setShowModal(false);
+    setHasWon(false);
   }
 
   console.log('has won');
@@ -22,6 +25,7 @@ function App() {
   // always render the modal but conditionally apply the active class
   return (
     <div className="container">
+      <MusicPlayer />
       <Modal resetGame={resetGame} showModal={showModal} hasWon={hasWon} />
       <div className={`overlay ${showModal ? 'active' : ''}`}></div>
 
@@ -32,7 +36,7 @@ function App() {
         </p>
         <div className="scores">
           <p>Score: {score}</p>
-          <p>Highest score:</p>
+          <p>Highest score: {highestScore.current}</p>
         </div>
       </header>
 
@@ -44,8 +48,8 @@ function App() {
         showModal={showModal}
         setShowModal={setShowModal}
         setHasWon={setHasWon}
+        highestScore={highestScore}
       />
-
       <Footer />
     </div>
   );

@@ -10,6 +10,7 @@ function Cards({
   showModal,
   setShowModal,
   setHasWon,
+  highestScore,
 }) {
   // use card data for inital render
   const [cards, setCards] = useState(cardData);
@@ -25,26 +26,31 @@ function Cards({
   }
 
   function handleClick(cardId) {
+    // Compute the new score first
+    const newScore = score + 1;
+
     if (clickedCards.includes(cardId)) {
       // if card has already been clicked, end game
       setShowModal(true);
     } else {
-      // if card hasnt been clicked before && the modal isnt active
+      // if card hasn't been clicked before && the modal isn't active
       if (!showModal) {
         // add id to cards array
         setClickedCards([...clickedCards, cardId]);
-        // increment score
-        setScore(score + 1);
+        // Use newScore for checks
 
-        // check if new score matches the amount of cards,
-        // if so, end game and show modal
-        if (score + 1 === cardData.length) {
+        if (newScore > highestScore.current) {
+          highestScore.current = newScore;
+        }
+
+        if (newScore === cardData.length) {
           setHasWon(true);
           setShowModal(true);
         }
 
+        // update the score state at the end
+        setScore(newScore);
         setCards(shuffleCards([...cards]));
-        setHasWon(false);
       }
     }
   }

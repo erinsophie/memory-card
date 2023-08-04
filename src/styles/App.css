@@ -41,3 +41,9 @@
   margin-top: 55px;
   text-align: center;
 }
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background: transparent;
+}

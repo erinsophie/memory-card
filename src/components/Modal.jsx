@@ -6,12 +6,12 @@ function Modal({ resetGame, showModal, hasWon }) {
       {hasWon ? (
         <div>
           <p>You won!</p>
-          <p>You are clearly a memory master!</p>
+          <p>You&apos;re clearly a memory master!</p>
         </div>
       ) : (
         <div>
           <p>You lost!</p>
-          <p>But dont give up, keep practicing</p>
+          <p>But don&apos;t give up, keep practicing</p>
         </div>
       )}
 

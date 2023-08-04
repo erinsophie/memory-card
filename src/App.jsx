@@ -19,9 +19,6 @@ function App() {
     setHasWon(false);
   }
 
-  console.log('has won');
-  console.log(hasWon);
-
   // always render the modal but conditionally apply the active class
   return (
     <div className="container">

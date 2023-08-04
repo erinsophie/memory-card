@@ -1,5 +1,3 @@
-
-
 /* css reset */
 
 *,
@@ -44,7 +42,7 @@ h6 {
 
 :root {
   --bg-color: #ffecc7;
-  --font-color: #7b5100;
-  --light-brown: #B57700;
-  --shadow: #AAAAAA;
+  --font: #7b5100;
+  --border: #b57700;
+  --shadow: #aaaaaa;
 }

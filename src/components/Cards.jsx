@@ -9,6 +9,7 @@ function Cards({
   setClickedCards,
   showModal,
   setShowModal,
+  setHasWon,
 }) {
   // use card data for inital render
   const [cards, setCards] = useState(cardData);
@@ -28,16 +29,22 @@ function Cards({
       // if card has already been clicked, end game
       setShowModal(true);
     } else {
+      // if card hasnt been clicked before && the modal isnt active
       if (!showModal) {
         // add id to cards array
         setClickedCards([...clickedCards, cardId]);
         // increment score
-        setScore((prevScore) => prevScore + 1);
+        setScore(score + 1);
 
-        // check if new score matches the amount of cards, if so, show the modal
-        score + 1 === cardData.length
-          ? setShowModal(true)
-          : setCards(shuffleCards([...cards]));
+        // check if new score matches the amount of cards,
+        // if so, end game and show modal
+        if (score + 1 === cardData.length) {
+          setHasWon(true);
+          setShowModal(true);
+        }
+
+        setCards(shuffleCards([...cards]));
+        setHasWon(false);
       }
     }
   }

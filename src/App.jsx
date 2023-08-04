@@ -8,6 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [hasWon, setHasWon] = useState(false);
 
   function resetGame() {
     setScore(0);
@@ -15,13 +16,13 @@ function App() {
     setShowModal(false);
   }
 
-  console.log('clicked cards');
-  console.log(clickedCards);
+  console.log('has won');
+  console.log(hasWon);
 
   // always render the modal but conditionally apply the active class
   return (
     <div className="container">
-      <Modal resetGame={resetGame} showModal={showModal} />
+      <Modal resetGame={resetGame} showModal={showModal} hasWon={hasWon} />
       <div className={`overlay ${showModal ? 'active' : ''}`}></div>
 
       <header className="header">
@@ -42,6 +43,7 @@ function App() {
         setClickedCards={setClickedCards}
         showModal={showModal}
         setShowModal={setShowModal}
+        setHasWon={setHasWon}
       />
 
       <Footer />

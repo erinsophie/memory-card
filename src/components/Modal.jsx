@@ -1,16 +1,15 @@
 import '../styles/Modal.css';
-import cardData from './cardData';
 
 // if scores matches the data length then all cards have been clicked
 // decide modal text based on this condition
 
-function Modal({ resetGame, showModal, score }) {
+function Modal({ resetGame, showModal, hasWon }) {
   return (
     <div className={`modal ${showModal ? 'active' : ''}`}>
-      {score === cardData.length ? (
+      {hasWon ? (
         <div>
           <p>You won!</p>
-          <p>You have clearly mastered the art of memorization!</p>
+          <p>You are clearly a memory master!</p>
         </div>
       ) : (
         <div>

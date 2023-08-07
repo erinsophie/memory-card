@@ -1,4 +1,4 @@
-# CV project
+# Memory Card
 
 ## [Live Demo](https://lively-dolphin-d4646a.netlify.app)
 

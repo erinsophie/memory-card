@@ -1,6 +1,6 @@
 # CV project
 
-## [Live Demo]()
+## [Live Demo](https://lively-dolphin-d4646a.netlify.app)
 
 ![Memory Card](./src/assets/img/memory-card.png)
 

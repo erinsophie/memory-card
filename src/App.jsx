@@ -21,8 +21,6 @@ function App() {
     setReshuffle(true);
   }
 
-  console.log(showModal)
-
   // always render the modal but conditionally apply the active class
   return (
     <div className="container">
@@ -42,7 +40,6 @@ function App() {
       </header>
 
       <Cards
-        score={score}
         setScore={setScore}
         clickedCards={clickedCards}
         setClickedCards={setClickedCards}

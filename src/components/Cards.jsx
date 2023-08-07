@@ -3,7 +3,6 @@ import cardData from './cardData';
 import '../styles/Cards.css';
 
 function Cards({
-  score,
   setScore,
   clickedCards,
   setClickedCards,
@@ -27,25 +26,34 @@ function Cards({
     return newArray;
   }
 
-  // reshuffle when reset function is called
+  // when resetGame sets reshuffle to true, reshuffle cards
   useEffect(() => {
-    setCards(shuffleCards([...cardData]));
-    setReshuffle(false);
+    if (reshuffle) {
+      // use original array for shuffling upon reset
+      setCards(shuffleCards([...cardData]));
+      setReshuffle(false);
+    }
   }, [reshuffle]);
-
 
   function endGame() {
     setShowModal(true);
   }
 
   function handleValidCardClick(cardId) {
-    const newScore = score + 1;
+    // calculate what new score would be
+    // use it to update the scores and check for win
+    setScore((prevScore) => {
+      const newScore = prevScore + 1;
+      updateHighScore(newScore);
+      checkForWin(newScore);
+      // then set new state
+      return newScore;
+    });
 
-    setClickedCards([...clickedCards, cardId]);
-    updateHighScore(newScore);
-    checkForWin(newScore);
-    setScore(newScore);
-    setCards(shuffleCards([...cards]));
+    // add id to the clicked cards array
+    setClickedCards((prevCards) => [...prevCards, cardId]);
+    // then reshuffle cards
+    setCards((prevCards) => shuffleCards([...prevCards]));
   }
 
   function updateHighScore(newScore) {
@@ -54,6 +62,7 @@ function Cards({
     }
   }
 
+  // if the score matches the amount of cards, then player has won
   function checkForWin(newScore) {
     if (newScore === cardData.length) {
       setHasWon(true);
@@ -61,6 +70,8 @@ function Cards({
     }
   }
 
+  // either end game if player has lost or handle valid card click
+  // dont allow player to click on cards when modal is shown
   function handleClick(cardId) {
     if (clickedCards.includes(cardId)) {
       endGame();

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import cardData from './cardData';
 import '../styles/Cards.css';
 
@@ -11,19 +11,28 @@ function Cards({
   setShowModal,
   setHasWon,
   highestScore,
+  reshuffle,
+  setReshuffle,
 }) {
-  // use card data array for inital render
   const [cards, setCards] = useState(cardData);
 
   // Fisher-Yates shuffle algorithm
   function shuffleCards(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); // Get random index from 0 to i
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements at i and j
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
 
-    return array;
+    return newArray;
   }
+
+  // reshuffle when reset function is called
+  useEffect(() => {
+    setCards(shuffleCards([...cardData]));
+    setReshuffle(false);
+  }, [reshuffle]);
+
 
   function endGame() {
     setShowModal(true);

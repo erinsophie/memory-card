@@ -11,13 +11,17 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [hasWon, setHasWon] = useState(false);
+  const [reshuffle, setReshuffle] = useState(false);
 
   function resetGame() {
     setScore(0);
     setClickedCards([]);
     setShowModal(false);
     setHasWon(false);
+    setReshuffle(true);
   }
+
+  console.log(showModal)
 
   // always render the modal but conditionally apply the active class
   return (
@@ -46,6 +50,8 @@ function App() {
         setShowModal={setShowModal}
         setHasWon={setHasWon}
         highestScore={highestScore}
+        reshuffle={reshuffle}
+        setReshuffle={setReshuffle}
       />
       <Footer />
     </div>

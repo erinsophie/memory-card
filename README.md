@@ -2,7 +2,7 @@
 
 ## [Live Demo](https://lively-dolphin-d4646a.netlify.app)
 
-![Memory Card](./src/assets/img/memoryCard.png)
+![Memory Card](./src/assets/img/links-kitchen.png)
 
 # Technologies Used
 

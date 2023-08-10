@@ -13,7 +13,7 @@ function MusicPlayer() {
     <div className="audio-player">
       <p className="music-text">Hateno Ancient Tech Lab</p>
       <audio ref={audioRef} loop>
-        <source src="../public/hateno-tech-lab.mp3" type="audio/mpeg" />
+        <source src="/hateno-tech-lab.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 

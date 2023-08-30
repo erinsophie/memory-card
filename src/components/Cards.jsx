@@ -9,7 +9,8 @@ function Cards({
   showModal,
   setShowModal,
   setHasWon,
-  highestScore,
+  highScore,
+  setHighScore,
   reshuffle,
   setReshuffle,
 }) {
@@ -57,8 +58,8 @@ function Cards({
   }
 
   function updateHighScore(newScore) {
-    if (newScore > highestScore.current) {
-      highestScore.current = newScore;
+    if (newScore > highScore) {
+      setHighScore(newScore);
     }
   }
 

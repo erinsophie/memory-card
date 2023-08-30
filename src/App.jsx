@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './styles/App.css';
 import Modal from './components/Modal';
 import Cards from './components/Cards';
@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import MusicPlayer from './components/MusicPlayer';
 
 function App() {
-  let highestScore = useRef(0);
+  const [highScore, setHighScore] = useState(0);
   const [score, setScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -35,7 +35,7 @@ function App() {
         </p>
         <div className="scores">
           <p>Score: {score}</p>
-          <p>Highest score: {highestScore.current}</p>
+          <p>Highest score: {highScore}</p>
         </div>
       </header>
 
@@ -46,7 +46,8 @@ function App() {
         showModal={showModal}
         setShowModal={setShowModal}
         setHasWon={setHasWon}
-        highestScore={highestScore}
+        highScore={highScore}
+        setHighScore={setHighScore}
         reshuffle={reshuffle}
         setReshuffle={setReshuffle}
       />
